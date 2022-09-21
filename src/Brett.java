@@ -7,29 +7,48 @@ public class Brett {
     Brett() {
         brett = new char[8][8];
     }
-    public char[][] getBrett(){
-        return brett;
+
+    public Brett copier(){
+        Brett newBrett = new Brett();
+        for (int x = 0; x<8;x++){
+            for (int y =0; y<8;y++){
+                newBrett.brett[x][y] = this.brett[x][y];
+            }
+        }
+        return newBrett;
     }
 
-    public void setzeStein(int xPos) {
+
+    public Brett setzeSteinCalc(int xPos, char spieler) {
 
         int yPos = 0;
+        Brett newBrett = this.copier();
         while (yPos < 8) {
-            if (brett[xPos][yPos] == Null) {
-                brett[xPos][yPos] = zugSpieler;
-                if (zugSpieler == 'x') {
-                    zugSpieler = 'o';
-                    zugGegenSpieler = 'x';
-                }
-                else if (zugSpieler == 'o') {
-                    zugSpieler = 'x';
-                    zugGegenSpieler = 'o';
-                }
 
-                return;
+            if (brett[xPos][yPos] == Null) {
+
+                newBrett.brett[xPos][yPos] = spieler;
+                return newBrett;
             }
             yPos++;
         }
+        return newBrett;
+
+    }
+    public void setzeStein(int xPos, char spieler) {
+
+        int yPos = 0;
+        ;
+        while (yPos < 8) {
+
+            if (brett[xPos][yPos] == Null) {
+
+                brett[xPos][yPos] = spieler;
+                return ;
+            }
+            yPos++;
+        }
+
 
     }
 
@@ -71,13 +90,15 @@ public class Brett {
         return Null;
     }
 
-    public int pruefepunkte() {
+    public int pruefepunkte(char zugSpieler,char zugGegenSpieler) {
+
+
         int punkte = 0;
         //horizontal 4er
         for (int y = 0; y < 8; y++) {
             for (int x = 0; x < 5; x++) {
                 if (brett[x][y] == zugSpieler && brett[x + 1][y] == zugSpieler && brett[x + 2][y] == zugSpieler && zugSpieler == brett[x + 3][y]) {
-                    punkte = +100;
+                    punkte +=100;
                 }
             }
 
@@ -86,7 +107,7 @@ public class Brett {
         for (int x = 0; x < 8; x++) {
             for (int y = 0; y < 5; y++) {
                 if (brett[x][y] == zugSpieler && brett[x][y + 1] == zugSpieler && brett[x][y + 2] == zugSpieler && zugSpieler == brett[x][y + 3]) {
-                    punkte=+100;
+                    punkte+=100;
                 }
             }
 
@@ -95,7 +116,7 @@ public class Brett {
         for (int x = 0; x < 5; x++) {
             for (int y = 0; y < 5; y++) {
                 if (zugSpieler == brett[x][y] && zugSpieler == brett[x+1][y+1] && brett[x + 2][y + 2] == zugSpieler && zugSpieler == brett[x + 3][y + 3]) {
-                    punkte =+100;
+                    punkte +=100;
                 }
             }
 
@@ -104,7 +125,7 @@ public class Brett {
         for (int x = 3; x < 8; x++) {
             for (int y = 0; y < 5; y++) {
                 if ( brett[x][y] == zugSpieler && brett[x - 1][y + 1] == zugSpieler && brett[x - 2][y + 2] == zugSpieler && zugSpieler== brett[x - 3][y + 3]) {
-                    punkte =+100;
+                    punkte +=100;
                 }
             }
 
@@ -113,7 +134,7 @@ public class Brett {
         for (int y = 0; y < 8; y++) {
             for (int x = 0; x < 5; x++) {
                 if (brett[x][y] == zugSpieler && brett[x + 1][y] == zugSpieler && brett[x + 2][y] == zugSpieler &&  Null==brett[x+3][y]) {
-                    punkte = +10;
+                    punkte +=10;
                 }
             }
 
@@ -122,7 +143,7 @@ public class Brett {
         for (int x = 0; x < 8; x++) {
             for (int y = 0; y < 5; y++) {
                 if (brett[x][y] == zugSpieler && brett[x][y + 1] == zugSpieler && brett[x][y + 2] == zugSpieler && Null == brett[x][y + 3]) {
-                    punkte=+10;
+                    punkte+=10;
                 }
             }
 
@@ -131,7 +152,7 @@ public class Brett {
         for (int x = 0; x < 5; x++) {
             for (int y = 0; y < 5; y++) {
                 if (zugSpieler == brett[x][y] && zugSpieler == brett[x+1][y+1] && brett[x + 2][y + 2] == zugSpieler && Null == brett[x + 3][y + 3]) {
-                    punkte =+10;
+                    punkte +=10;
                 }
             }
 
@@ -140,7 +161,7 @@ public class Brett {
         for (int x = 3; x < 8; x++) {
             for (int y = 0; y < 5; y++) {
                 if ( brett[x][y] == zugSpieler && brett[x - 1][y + 1] == zugSpieler && brett[x - 2][y + 2] == zugSpieler && Null== brett[x - 3][y + 3]) {
-                    punkte =+10;
+                    punkte +=10;
                 }
             }
 
@@ -149,7 +170,7 @@ public class Brett {
         for (int y = 0; y < 8; y++) {
             for (int x = 0; x < 5; x++) {
                 if (brett[x][y] == zugSpieler && brett[x + 1][y] == zugSpieler && brett[x + 2][y] == Null &&  Null==brett[x+3][y]) {
-                    punkte = +2;
+                    punkte += 2;
                 }
             }
 
@@ -158,7 +179,7 @@ public class Brett {
         for (int x = 0; x < 8; x++) {
             for (int y = 0; y < 5; y++) {
                 if (brett[x][y] == zugSpieler && brett[x][y + 1] == zugSpieler && brett[x][y + 2] == Null && Null == brett[x][y + 3]) {
-                    punkte=+2;
+                    punkte+=2;
                 }
             }
 
@@ -167,7 +188,7 @@ public class Brett {
         for (int x = 0; x < 5; x++) {
             for (int y = 0; y < 5; y++) {
                 if (zugSpieler == brett[x][y] && zugSpieler == brett[x+1][y+1] && brett[x + 2][y + 2] == Null && Null == brett[x + 3][y + 3]) {
-                    punkte =+2;
+                    punkte +=2;
                 }
             }
 
@@ -176,7 +197,7 @@ public class Brett {
         for (int x = 3; x < 8; x++) {
             for (int y = 0; y < 5; y++) {
                 if ( brett[x][y] == zugSpieler && brett[x - 1][y + 1] == zugSpieler && brett[x - 2][y + 2] == Null && Null== brett[x - 3][y + 3]) {
-                    punkte =+2;
+                    punkte +=2;
                 }
             }
 
@@ -185,7 +206,7 @@ public class Brett {
         for (int y = 0; y < 8; y++) {
             for (int x = 0; x < 5; x++) {
                 if (brett[x][y] == zugGegenSpieler && brett[x + 1][y] == zugGegenSpieler && brett[x + 2][y] == zugGegenSpieler && zugGegenSpieler == brett[x + 3][y]) {
-                    punkte = -400;
+                    punkte -=100;
                 }
             }
 
@@ -194,7 +215,7 @@ public class Brett {
         for (int x = 0; x < 8; x++) {
             for (int y = 0; y < 5; y++) {
                 if (brett[x][y] == zugGegenSpieler && brett[x][y + 1] == zugGegenSpieler && brett[x][y + 2] == zugGegenSpieler && zugGegenSpieler == brett[x][y + 3]) {
-                    punkte=-400;
+                    punkte-=100;
                 }
             }
 
@@ -203,7 +224,7 @@ public class Brett {
         for (int x = 0; x < 5; x++) {
             for (int y = 0; y < 5; y++) {
                 if (zugGegenSpieler == brett[x][y] && zugGegenSpieler == brett[x+1][y+1] && brett[x + 2][y + 2] == zugGegenSpieler && zugGegenSpieler == brett[x + 3][y + 3]) {
-                    punkte =-400;
+                    punkte -=100;
                 }
             }
 
@@ -212,7 +233,7 @@ public class Brett {
         for (int x = 3; x < 8; x++) {
             for (int y = 0; y < 5; y++) {
                 if ( brett[x][y] == zugGegenSpieler && brett[x - 1][y + 1] == zugGegenSpieler && brett[x - 2][y + 2] == zugGegenSpieler && zugGegenSpieler== brett[x - 3][y + 3]) {
-                    punkte =-400;
+                    punkte -=100;
                 }
             }
 
@@ -221,7 +242,7 @@ public class Brett {
         for (int y = 0; y < 8; y++) {
             for (int x = 0; x < 5; x++) {
                 if (brett[x][y] == zugGegenSpieler && brett[x + 1][y] == zugGegenSpieler && brett[x + 2][y] == zugGegenSpieler &&  Null==brett[x+3][y]) {
-                    punkte = -10;
+                    punkte -=10;
                 }
             }
 
@@ -230,7 +251,7 @@ public class Brett {
         for (int x = 0; x < 8; x++) {
             for (int y = 0; y < 5; y++) {
                 if (brett[x][y] == zugGegenSpieler && brett[x][y + 1] == zugGegenSpieler && brett[x][y + 2] == zugGegenSpieler && Null == brett[x][y + 3]) {
-                    punkte=-10;
+                    punkte-=10;
                 }
             }
 
@@ -239,7 +260,7 @@ public class Brett {
         for (int x = 0; x < 5; x++) {
             for (int y = 0; y < 5; y++) {
                 if (zugGegenSpieler == brett[x][y] && zugGegenSpieler == brett[x+1][y+1] && brett[x + 2][y + 2] == zugGegenSpieler && Null == brett[x + 3][y + 3]) {
-                    punkte =-10;
+                    punkte -=10;
                 }
             }
 
@@ -248,7 +269,7 @@ public class Brett {
         for (int x = 3; x < 8; x++) {
             for (int y = 0; y < 5; y++) {
                 if ( brett[x][y] == zugGegenSpieler && brett[x - 1][y + 1] == zugGegenSpieler && brett[x - 2][y + 2] == zugGegenSpieler && Null== brett[x - 3][y + 3]) {
-                    punkte =-10;
+                    punkte -=10;
                 }
             }
 
@@ -257,7 +278,7 @@ public class Brett {
         for (int y = 0; y < 8; y++) {
             for (int x = 0; x < 5; x++) {
                 if (brett[x][y] == zugGegenSpieler && brett[x + 1][y] == zugGegenSpieler && brett[x + 2][y] == Null &&  Null==brett[x+3][y]) {
-                    punkte = -2;
+                    punkte -=2;
                 }
             }
 
@@ -266,7 +287,7 @@ public class Brett {
         for (int x = 0; x < 8; x++) {
             for (int y = 0; y < 5; y++) {
                 if (brett[x][y] == zugGegenSpieler && brett[x][y + 1] == zugGegenSpieler && brett[x][y + 2] == Null && Null == brett[x][y + 3]) {
-                    punkte=-2;
+                    punkte-=2;
                 }
             }
 
@@ -275,7 +296,7 @@ public class Brett {
         for (int x = 0; x < 5; x++) {
             for (int y = 0; y < 5; y++) {
                 if (zugGegenSpieler == brett[x][y] && zugGegenSpieler == brett[x+1][y+1] && brett[x + 2][y + 2] == Null && Null == brett[x + 3][y + 3]) {
-                    punkte =-2;
+                    punkte -=2;
                 }
             }
 
@@ -284,7 +305,7 @@ public class Brett {
         for (int x = 3; x < 8; x++) {
             for (int y = 0; y < 5; y++) {
                 if ( brett[x][y] == zugGegenSpieler && brett[x - 1][y + 1] == zugGegenSpieler && brett[x - 2][y + 2] == Null && Null== brett[x - 3][y + 3]) {
-                    punkte =-2;
+                    punkte -=2;
                 }
             }
 
