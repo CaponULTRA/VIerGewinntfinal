@@ -321,11 +321,13 @@ public class Brett {
     public void printBrett() {
         for (int y = 7; y >= 0; y--) {
             for (int x = 0; x < 8; x++) {
-                System.out.print(brett[x][y]);
+                System.out.print("| "+brett[x][y]+" ");
             }
+            System.out.print("|");
             System.out.println();
         }
-        System.out.println();
+
+        System.out.println("| 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |");System.out.println();
     }
 
     public void wechselAmZug(){
