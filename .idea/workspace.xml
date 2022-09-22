@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a2dc89e-1916-43a7-8422-e5461a0cbf07" name="Changes" comment="nice">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Brett.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Brett.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +83,8 @@
       <workItem from="1663495731300" duration="16741000" />
       <workItem from="1663622936042" duration="6148000" />
       <workItem from="1663710604407" duration="4460000" />
-      <workItem from="1663741067656" duration="4338000" />
+      <workItem from="1663741067656" duration="20971000" />
+      <workItem from="1663866156018" duration="6154000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1663672164393</created>
@@ -96,7 +100,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663745233685</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="nice">
+      <created>1663745705124</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1663745705124</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,22 +129,6 @@
     <MESSAGE value="1" />
     <MESSAGE value="nice" />
     <option name="LAST_COMMIT_MESSAGE" value="nice" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Brett.java</url>
-          <line>312</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-    <pin-to-top-manager>
-      <pinned-members>
-        <PinnedItemInfo parentTag="List" memberName="first" />
-      </pinned-members>
-    </pin-to-top-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/VIerGewinnt$main.ic" NAME="main Coverage Results" MODIFIED="1663511589990" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

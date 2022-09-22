@@ -1,13 +1,13 @@
 public class Bot {
-char player;
-char gegen;
-public Bot(char player){
-    if (player == 'x')gegen='o';
-    else gegen='x';
-    this.player = player;
+    char player;
+    char gegen;
+    public Bot(char player){
+        if (player == 'x')gegen='o';
+        else gegen='x';
+        this.player = player;
 
 
-}
+    }
 
 
 
@@ -18,7 +18,7 @@ public Bot(char player){
 
 
     public int getAction(Brett brett) {
-        double val = minmax_value(brett, 5, true);
+        double val = minmax_value(brett, 7, true);
         //return max_value(st, depth);
         return x;
 
@@ -26,8 +26,18 @@ public Bot(char player){
 
     public int minmax_value(Brett brett, int d, boolean isMax) {
         List<Integer> moeglicheZuege = new List<Integer>();
-        if (d == 0)
-            return brett.pruefepunkte(player,gegen);
+        if (d == 0) {
+            if (!isMax)return brett.pruefepunkte(player, gegen);
+            else return brett.pruefepunkte(gegen,player);
+        }
+        else if (brett.pruefeGewinn() == player) {
+            if (isMax) return Integer.MAX_VALUE;
+            else return Integer.MIN_VALUE;
+        }
+        else if (brett.pruefeGewinn()==gegen) {
+            if (isMax) return Integer.MIN_VALUE;
+            else return Integer.MAX_VALUE;
+        }
         else {
             if (isMax) {
                 moeglicheZuege = brett.GetMoeglicheZuege();
@@ -54,7 +64,7 @@ public Bot(char player){
                 //double z;
                 moeglicheZuege.toFirst();
                 while (moeglicheZuege.hasAccess()) {
-                    z = minmax_value(brett.setzeSteinCalc(moeglicheZuege.getContent(), gegen), d-1, false);
+                    z = minmax_value(brett.setzeSteinCalc(moeglicheZuege.getContent(), gegen), d-1, true);
                     if (z <= v) {
                         v = z;
                         this.x = moeglicheZuege.getContent();
